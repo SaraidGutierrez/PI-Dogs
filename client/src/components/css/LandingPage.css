@@ -1,0 +1,82 @@
+body::before {
+    content: "";
+    background-image: url('../../images/fondo4.jpeg');
+    background-attachment: fixed;
+    background-size: cover;
+    opacity: 0.7;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    
+  }
+  
+ 
+  
+  .cuadro {
+    background-color: rgb(242, 240, 237);
+    background-image: url('../../images/perros.png');
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    min-height: 70vh;
+    min-width: 80vh;
+    max-width:90vh ;
+    margin:auto;
+    margin-top: 10%;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    z-index: 1;
+  }
+  
+  .boton{
+    background-color: rgb(124, 182, 224);
+    
+    display: inline-block;
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+  
+  border-radius: 50px;
+  padding: 8px 16px;
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+  line-height: 26px;
+  margin: auto;
+
+  }
+
+  .imagen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    margin:auto;
+   
+}
+
+.titulo1 {
+    position: absolute;
+    top: 22%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    color: rgb(180, 81, 46);
+}
+
+.contenido{
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+}
+
+.parrafo {
+    text-align: center;
+  }

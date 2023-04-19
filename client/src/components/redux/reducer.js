@@ -20,7 +20,7 @@ const INITIAL_STATE = {
     showingDogs: [],
   };
 
-  console.log(INITIAL_STATE.dogs, 'estado inicial')
+
 
 export default function rootReducer(state = INITIAL_STATE, { type, payload }){
     switch(type){
@@ -35,28 +35,28 @@ export default function rootReducer(state = INITIAL_STATE, { type, payload }){
                 
             }
         case GET_DETAIL:
-            console.log('entra al reducer get detail')
+           
             return{
                 ...state,
                 detail:payload,
                 
             }
         case GET_DOG_BY_NAME:
-         console.log('entra al reducer get by name')
+        
             return{
                 ...state,
                 showingDogs: payload,
                   
             }
         case GET_TEMPERAMENTS:
-         console.log('entra al reducer get temperament')
+         
             return{
                 ...state,
                 temperaments: payload,
                          
             }
         case POST_DOG:
-         console.log('entra al reducer post dog')
+         
             return{
                 ...state,
                 

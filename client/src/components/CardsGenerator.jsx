@@ -1,11 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+
 import './css/CardsGenerator.css'
 import perroEstandar from '../images/perro_estandar.jpeg'
 
 const CardsGenerator = (props) => {
-  const {id, name, image, temperament, height, weight, life_span} = props
+  const {id, name, image, temperament, weight} = props
 
   let temperamentos =
   typeof temperament === 'object'
@@ -16,7 +16,7 @@ const CardsGenerator = (props) => {
 
   return (
     <div className='card-container'>
-      <Link to={`/dogs/${id}`}>
+      <Link to={`/dogs/${id}`} className='enlaces'>
       <div className='card'>
         <div className='image-container'>
           <img className='image' src={image ? image : perroEstandar} alt={name} />

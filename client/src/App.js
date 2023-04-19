@@ -2,7 +2,7 @@ import './App.css';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom'
 import LandingPage from './components/LandingPage.jsx'
 import { NavBar } from './components/NavBar';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { useState, useEffect } from 'react';
 import Home from './components/Home.jsx'
 import { getAllDogsfunc } from './components/redux/action';

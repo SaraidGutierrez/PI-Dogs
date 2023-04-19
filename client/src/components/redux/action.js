@@ -67,7 +67,7 @@ export const getDetail = (id)=>{
         try {
             let busqueda = await axios.get(`http://localhost:3001/dogs/${id}`)
             let payload = busqueda.data
-            console.log(busqueda.data, 'esto es busqueda data linea 60')
+            
             return dispatch({
                 type: GET_DETAIL,
                 payload: payload
@@ -77,17 +77,40 @@ export const getDetail = (id)=>{
         }
     }
 }
+
+export const cleanDetail = ()=>{
+    return function(dispatch){
+        try {
+            let clean = {}
+            
+            return dispatch({
+                type: GET_DETAIL,
+                payload: clean
+            })
+        } catch (error) {
+            return {error: error}
+        }
+    }
+}
+
+
 export const postDog = (newDog)=>{
     return async function(dispatch){
         try {
              await axios.post(`http://localhost:3001/dogs`, newDog)
+
+             alert(`Successfully created dog`);
             
-            return dispatch({
+            return (dispatch({
                 type: POST_DOG,
                 
                
-            })
+            }
+            
+            ))
+            
         } catch (error) {
+            alert(`Failed to create dog`);
             return {error: error}
         }
     }

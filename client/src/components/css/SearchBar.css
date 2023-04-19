@@ -1,46 +1,40 @@
 /* Estilos para el componente SearchBar */
 
-.SearchBar {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    border: 3px solid #2E8B57; /* Cambia el color si quieres */
-    border-radius: 10px;
-    padding: 10px;
-    margin-bottom: 10px; /* Puedes ajustar este valor según tus necesidades */
+.searchInput {
+  border: 3px solid rgb(180, 81, 46);
+  border-radius: 10px;
+  padding: 8px;
+  font-size: 16px;
+  font-family: 'Helvetica Neue', sans-serif;
+  margin-right: 10px;
+  min-width: 200px; /*LArgo del input*/
+  height: 50px;
+  vertical-align: middle;
+  
 
-  }
+}
+
+.button1 {
   
-  .SearchBar input {
-    border: 2px solid #228B22;
+    background-color:rgb(180, 81, 46);
+    background-position: 12%;
+    background-size: auto 60%;
+    background-repeat: no-repeat;
     border-radius: 10px;
-    padding: 8px;
-    font-size: 16px;
-    font-family: 'Helvetica Neue', sans-serif;
-    margin-right: 10px;
-    min-width: 200px;
-    position: relative;
+    text-align: right;
+    width: 100px;
+    outline: 0;
+    border: 0;
+    margin: 10px;
   
-  z-index: 1;
-  }
-  
-  .SearchBar button {
-    border: none;
-    border-radius: 10px;
-    padding: 8px 16px;
-    background-color: #228B22;
-    color: #fff;
-    font-size: 16px;
-    font-weight: bold;
-    font-family: 'Helvetica Neue', sans-serif;
     cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  .SearchBar button:hover {
-    background-color: #2E8B57;
-  }
-  
-  .contorno{
-    border-color: blueviolet;
-  }
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 30px; /* add 30 pixels of padding to the left side */
+    padding-right: 30px; /* add 30 pixels of padding to the right side */
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: aliceblue;
+    vertical-align: middle;
+}

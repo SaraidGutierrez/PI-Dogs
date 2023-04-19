@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import SearchBar from './SearchBar'
 import { Link } from 'react-router-dom'
 import { filterAZ, filterWeight, filterOrigin, getTemperaments, filterTemperament } from './redux/action';
+import './css/NavBar.css'
+import createImg from '../images/newDog.png'
 
 
 
@@ -43,6 +45,7 @@ import { filterAZ, filterWeight, filterOrigin, getTemperaments, filterTemperamen
     };
   
     const handleSelectTemperaments = (e) =>{
+      if(filters.temperament.length<8){
            setFilters({
               ...filters,
               temperament: [
@@ -50,13 +53,18 @@ import { filterAZ, filterWeight, filterOrigin, getTemperaments, filterTemperamen
                 e.target.value,
               ]
            })
+    }else{
+      alert('Solo puedes filtrar un maximo de 8')
     }
+  }
 
     const handleDelete = (e) => {
+     
       setFilters({
         ...filters,
         temperament: filters.temperament.filter((el) => el !== e),
       });
+    
     };
 
     function handleSubmitFilter(e) {
@@ -65,15 +73,32 @@ import { filterAZ, filterWeight, filterOrigin, getTemperaments, filterTemperamen
         setPage(prevState => !prevState);
     }
   
+ function handleReset(e){
+    e.preventDefault();
+    dispatch(filterAZ({ order: "asc" }))
+    dispatch(filterOrigin({ order: "API" }))
+    dispatch(filterTemperament([]))
+    setFilters({...filters,temperament: []})
 
+    
+ }
 
     return (
-      <div>
-        <Link to="/create"><button>Create a new dog</button></Link>
+      <div className='seccion'>
+      <div className='fondo'>
+        <div className='createDog'>
+        <Link to="/create"><img src={createImg} className='dogimagen' alt='Perrito'/></Link>
+        <Link to="/create"><button className='buttonDog'>Create a new breed!</button>  </Link>
+        </div>
+        <div className='filtrosCont'>
+        <Link to="/home"><button className='boton-con-imagenHome'></button>  </Link>
+          <button className="boton-con-imagen" onClick={handleSortName}>A-Z <br></br>Sort</button>
+          <button className="boton-con-imagen2" onClick={handleSortWeight}>Weight <br></br>Sort</button>
         <div>
-          <button onClick={handleSortName}>A-Z Sort</button>
-          <button onClick={handleSortWeight}>Weight Sort</button>
-          <select name="origin" onChange={handleSelectChange}>  
+
+          
+        </div>
+          <select className='select2'name="origin" onChange={handleSelectChange}>  
             <option value="API">API</option>
             <option value="BD">Data Base</option>
             <option value="ALL">All Origins</option>
@@ -81,48 +106,51 @@ import { filterAZ, filterWeight, filterOrigin, getTemperaments, filterTemperamen
           {temperaments.length > 0 && (
                 <select
                     multiple
+                   
                     onChange={handleSelectTemperaments}
                 >
                     {temperaments.map((t) => (
-                    <option key={t.id} value={t.name}>
-                        {t.name}
-                    </option>
+                    <option key={t.id} value={t.name}>{t.name}</option>
                     ))}
                 </select>
             )}
-            <div>
-            {/* ---------------------*/}
-            {filters.temperament.map((el, i) => (
-                <button
-                  
-                  key={i}
-                  type="reset"
-                  onClick={() => handleDelete(el)}
-                >
-                  {el} X
-                </button>
-            ))}
-        
-            </div>
             {/* ---------------------*/}
             <button
-          
+                className='boton-con-imagen3'
                 type="submit"
                 onClick={(e) => handleSubmitFilter(e)}
-              >
+                >
                 Filter temperaments
               </button>
-
-
-
-            {/* ---------------------*/}
-
+            <button
+              className='boton-con-imagenReset'
+              onClick={(e)=> handleReset(e)}
+              type='reset'
+            >
+               
+            </button>
 
 
 
         </div>
         <SearchBar />
-        <div>NavBar</div>
+       </div>
+    
+                <div>
+                {/* ---------------------*/}
+                {filters.temperament.map((el, i) => (
+                    <button
+                      className='buttons'
+                      key={i}
+                      type="reset"
+                      onClick={() => handleDelete(el)}
+                    >
+                      {el} X
+                    </button>
+                ))}
+            
+                </div>  
+        
       </div>
     );
   };

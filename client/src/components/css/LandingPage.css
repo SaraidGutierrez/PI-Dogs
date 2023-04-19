@@ -36,7 +36,7 @@ body::before {
   .boton{
     background-color: rgb(124, 182, 224);
     
-    display: inline-block;
+  display: inline-block;
   outline: 0;
   border: 0;
   cursor: pointer;

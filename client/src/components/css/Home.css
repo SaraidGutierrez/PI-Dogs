@@ -4,3 +4,32 @@
    justify-content: center;
   
 }
+
+.botones {
+   align-items: center;
+   background-color:rgb(180, 81, 46);
+   background-position: 12%;
+ 
+   border-radius: 10px;
+   text-align: center;
+   width: 60px;
+   outline: 0;
+   border: 0;
+   margin: 10px;
+   cursor: pointer;
+   padding-top: 10px;
+   padding-bottom: 10px;
+   
+   font-family: 'Helvetica Neue', sans-serif;
+   font-size: 13px;
+   font-weight: 700;
+   color: aliceblue;
+}
+
+.Paginado{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   margin-right: 20px;
+}

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getTemperaments, postDog } from "./redux/action"
+import './css/FormNewDog.css'
 
 const FormNewDog = () => {
   const temperaments = useSelector((state) => state.temperaments);
@@ -26,7 +27,7 @@ const FormNewDog = () => {
   };
 
   const handleSelectChange = (e) => {
-    
+    if(!input.temperament.includes(e.target.value)){
     setInput({
         ...input,
         temperament: [
@@ -36,7 +37,7 @@ const FormNewDog = () => {
           ,
         ],
       });
-   
+   }
   };
   const handleDelete = (e) => {
     setInput({
@@ -48,47 +49,52 @@ const FormNewDog = () => {
     e.preventDefault();
 
     const nameRegex = /^[A-Za-z]+$/;
-    const numberRegex = /^[0-9]+$/;
+    const urlRegex = /\/\/(\S+?(?:jpe?g|png|gif))/ig;
 
-    if (!input.name.match(nameRegex)) {
-      setErrorMsg("Breed name can only contain letters");
+    if (!input.name.match(nameRegex) || input.name.length > 35) {
+      setErrorMsg("Breed name can only contain letters and not be greater than 35 characters");
+      return;
+    }
+    
+    if (Number(input.minWeight) < 1 || Number(input.minWeight) > 150) {
+      setErrorMsg("Min weight must be between 1 and 150");
+      return;
+    }
+    
+    if (Number(input.maxWeight)<= Number(input.minWeight) || Number(input.maxWeight) > 200) {
+      setErrorMsg("Max weight must be greater than minumun weight and less than 200");
       return;
     }
 
-    if (input.minWeight < 1) {
-      setErrorMsg("Min weight must be at least 1");
+    if(!input.image.match(urlRegex)){
+      setErrorMsg("Image url must be a valid url for an image");
       return;
     }
 
-    if (input.maxWeight <= input.minWeight) {
-      setErrorMsg("Max weight must be greater than minumun weight");
+    if (Number(input.minHeight) < 1 || Number(input.minHeight) > 200) {
+      setErrorMsg("Min height must be between 1 and 200");
       return;
     }
 
-    if (input.minHeight < 1) {
-      setErrorMsg("Min height must be at least 1");
+    if (Number(input.maxHeight) <= Number(input.minHeight) || Number(input.maxHeight) > 250) {
+      setErrorMsg("Max height must be greater than minimum height and less than 250");
       return;
     }
 
-    if (input.maxHeight <= input.minHeight) {
-      setErrorMsg("Max height must be greater than minimum height");
-      return;
-    }
-
-    if (input.minYears < 1) {
+    if (Number(input.minYears) < 1) {
       setErrorMsg("Minimun years must be at least 1");
       return;
     }
 
-    if (input.maxYears <= input.minYears || input.maxYears > 25) {
+    if (Number(input.maxYears) <= Number(input.minYears) || Number(input.maxYears) > 25) {
       setErrorMsg(
         "Maximun years must be greater than minimun years and less or equal to 25 years"
       );
       return;
     }
 
-    if (input.temperament.length === 0) {
-      setErrorMsg("You must select at least one temperament");
+    if (input.temperament.length === 0 || input.temperament.length > 5) {
+      setErrorMsg("You must select at least one temperament and max 5 temperaments");
       return;
     }
 
@@ -133,23 +139,15 @@ const FormNewDog = () => {
  
   
   return (
-    <div>
-      <div>
-        <h2>Create a new Dog</h2>
-        <form>
-          {/* LABELS */ }
-          <div>
-            <label>Breed name :</label>
-            <label>Weight (kg)</label>
-            <label>Height (cm)</label>
-            <label>Image (url) </label>
-            <label>Life span (years) </label>
-            <label>Temperaments </label>
-          </div>
-
-          {/* INPUTS */ }
-          <div>
+    <div className='wrapper'>
+      
+        <h2>Create a new breed</h2>
+        <form className="form">
+          
+<div>
+            <label className="titles">Breed name :</label>
             <input
+              className="inputs"
               type="text"
               pattern="[A-Za-z]+"
               placeholder="Breed name"
@@ -157,43 +155,67 @@ const FormNewDog = () => {
               name="name"
               onChange={handleChange}
             />
+
+
+</div>
+<div>
+            <label className="titles">Weight (kg)</label>
+            <div >
+                  <input
+                    className="inputs"
+                    type="number"
+                    pattern="[0-9]+"
+                    placeholder="Min weight"
+                    value={input.minWeight}
+                    min="1"
+                    name="minWeight"
+                    onChange={handleChange}
+                  />
+                  <input
+                    className="inputs"
+                    type="number"
+                    pattern="[0-9]+"
+                    placeholder="Max weight"
+                    value={input.maxWeight}
+                    min='0'
+                    name="maxWeight"
+                    onChange={handleChange}
+                  />
+            </div>
+
+</div>
+<div>
+            <label className="titles">Height (cm)</label>
+            <div>
+                  <input
+                   className="inputs"
+                    type="number"
+                    pattern="[0-9]+"
+                    placeholder="Min height"
+                    value={input.minHeight}
+                    min="1"
+                    name="minHeight"
+                    onChange={handleChange}
+                  />
+                  <input
+                   className="inputs"
+                    type="number"
+                    pattern="[0-9]+"
+                    placeholder="Max height"
+                    value={input.maxHeight}
+                    min='1'
+                    name="maxHeight"
+                    onChange={handleChange}
+                  />
+
+
+            </div>
+
+</div>
+<div>
+            <label className="titles">Image (url) </label>
             <input
-              type="number"
-              pattern="[0-9]+"
-              placeholder="Min weight"
-              value={input.minWeight}
-              min="1"
-              name="minWeight"
-              onChange={handleChange}
-            />
-            <input
-              type="number"
-              pattern="[0-9]+"
-              placeholder="Max weight"
-              value={input.maxWeight}
-              min='0'
-              name="maxWeight"
-              onChange={handleChange}
-            />
-            <input
-              type="number"
-              pattern="[0-9]+"
-              placeholder="Min height"
-              value={input.minHeight}
-              min="1"
-              name="minHeight"
-              onChange={handleChange}
-            />
-            <input
-              type="number"
-              pattern="[0-9]+"
-              placeholder="Max height"
-              value={input.maxHeight}
-              min='1'
-              name="maxHeight"
-              onChange={handleChange}
-            />
-            <input
+            className="inputs"
               type="url"
               pattern="^https?://.*\.(png|jpg|jpeg|gif)$" required
               placeholder="URL"
@@ -201,65 +223,85 @@ const FormNewDog = () => {
               name="image"
               onChange={handleChange}
             />
-            <input
-              type="number"
-              pattern="[0-9]+"
-              placeholder="Min years"
-              value={input.minYears}
-              min="1"
-              name="minYears"
-              onChange={handleChange}
-            />
-            <input
-              type="number"
-              pattern="[0-9]+"
-              placeholder="Max years"
-              value={input.maxYears}
-              min='1'
-              name="maxYears"
-              onChange={handleChange}
-            />
-            {temperaments.length > 0 && (
-                <select
-                    multiple
-                    value={input.temperament}
-                    onChange={handleSelectChange}
-                >
-                    {temperaments.map((t) => (
-                    <option key={t.id} value={t.name}>
-                        {t.name}
-                    </option>
-                    ))}
-                </select>
-            )}
+
+</div>
+<div>
+            <label className="titles">Life span (years) </label>
+            <div >
+
+                  <input
+                  className="inputs"
+                    type="number"
+                    pattern="[0-9]+"
+                    placeholder="Min years"
+                    value={input.minYears}
+                    min="1"
+                    name="minYears"
+                    onChange={handleChange}
+                  />
+                  <input
+                  className="inputs"
+                    type="number"
+                    pattern="[0-9]+"
+                    placeholder="Max years"
+                    value={input.maxYears}
+                    min='1'
+                    name="maxYears"
+                    onChange={handleChange}
+                  />
+
+            </div>
+
+</div>
+<div>
+            <label className="titles">Temperaments </label>
             <div>
-            {/* ---------------------*/}
-            {input.temperament.map((el, i) => (
-          <button
-            
-            key={i}
-            type="reset"
-            onClick={() => handleDelete(el)}
-          >
-            {el} X
-          </button>
-        ))}
-        
-      </div>
-       {/* ---------------------*/}
-       <div >
-        <button
-          
-          type="submit"
-          onClick={(e) => handleSubmit(e)}
-        >
-          Create new breed
-        </button>
-      </div>
-      <p>{errorMsg}</p>
-          </div>
+
+              <div  className="selects">
+
+                    {temperaments.length > 0 && (
+                        <select
+                            className="slect"
+                            multiple
+                            value={input.temperament}
+                            onChange={handleSelectChange}
+                        >
+                            {temperaments.map((t) => (
+                            <option key={t.id} value={t.name}>
+                                {t.name}
+                            </option>
+                            ))}
+                        </select>
+                    )}
+
+              </div>
+              <div className="selects2">
+                    {/* ---------------------*/}
+                    {input.temperament.map((el, i) => (
+                    <button
+                      className="buttons"
+                      key={i}
+                      type="reset"
+                      onClick={() => handleDelete(el)}
+                    >
+                      {el} X
+                    </button>
+                    ))}
+                
+              </div>
+
+            </div>
+
+</div>
         </form>
+
+       <div >
+          <button className="buttonSubmit" type="submit" onClick={(e) => handleSubmit(e)}>
+            Create new breed
+          </button>
+          <p>{errorMsg}</p>
       </div>
+     
     </div>
 
   );

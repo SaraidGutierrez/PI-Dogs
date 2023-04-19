@@ -1,0 +1,124 @@
+
+  
+ 
+ 
+
+ .wrapper {
+  background: rgba(157, 170, 170, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 25px;
+  margin: 10px;
+  padding: 5%;
+}
+
+
+  .titles {
+    display: flex;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: black;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: baseline;
+    margin-top: 30px;
+
+    margin-bottom: 15px;
+  }
+
+  .form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+   
+   
+    height: 40%;
+  }
+
+
+
+  .inputs{
+  border: 3px solid rgb(180, 81, 46);
+  border-radius: 10px;
+  padding: 8px;
+  font-size: 16px;
+  font-family: 'Helvetica Neue', sans-serif;
+  margin-top: 10px;
+  margin-left: 50px;
+  margin-right: 10px;
+  min-width: 200px; /*LArgo del input*/
+  height: 30px;
+  vertical-align: middle;
+  }
+
+  .buttonSubmit {
+  
+    background-color: rgb(180, 81, 46);
+   
+    border-radius: 10px;
+    text-align: center;
+    width: 300px;
+    outline: 0;
+    border: 0;
+    margin: 10px;
+  
+    cursor: pointer;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 30px; 
+    padding-right: 30px; 
+    font-size: 13px;
+    font-weight: 700;
+    color: aliceblue;
+    vertical-align: middle;
+}
+
+/* .selects{
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+} */
+
+.selects {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 600px;
+}
+.selects2 {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  max-width: 600px;
+}
+
+.slect {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  column-count: 3;
+}
+
+.buttons {
+  margin-right: 5px;
+  margin-bottom: 5px;
+  padding: 5px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  background-color:rgba(157, 170, 170, 0.5);
+  color: white;
+  cursor: pointer;
+}
+
+

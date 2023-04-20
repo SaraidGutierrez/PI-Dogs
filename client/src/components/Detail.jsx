@@ -6,13 +6,14 @@ import { getDetail, cleanDetail } from './redux/action';
 import goback from '../images/pointer.png'
 import './css/Detail.css'
 import perroEstandar from '../images/perro_estandar.jpeg'
+import { type } from "os";
 
 const Detail = () => {
     const dispatch = useDispatch()
     const {idRaza} = useParams()
     const dog = useSelector(state => state.detail)
  useEffect(() => {
-      console.log('hola')
+     
       dispatch(getDetail(idRaza))
         
       return () => {
@@ -21,7 +22,10 @@ const Detail = () => {
 
       }, [idRaza])
       
-  
+      let temperamentos =
+      typeof dog.temperament === 'object'
+      ? dog.temperament.join(', ')
+      : dog.temperament
   return (
 
     
@@ -29,7 +33,7 @@ const Detail = () => {
 
       {dog.name ? <> <Link className='home'to='/home'><img src={goback} alt='Imagen Go Back'className="goback" />Go home</Link>
       <h1 className="titulo">{dog.name? dog.name : 'No information about'}</h1>
-      <p className="parrafo">Temperament: {dog.temperament ? dog?.temperament : 'No information about'}</p>
+      <p className="parrafo">Temperament: {temperamentos ? temperamentos: 'No information about'}</p>
       <p className="parrafo">Heigth: {dog.height ? dog.height : 'No information about'} cm</p>
       <p className="parrafo">Weigth: {dog.weight? dog.weight : 'No information about'} kg </p>
       <p className="parrafo">Life span: {dog.life_span? dog.life_span : 'No information about'} years</p>

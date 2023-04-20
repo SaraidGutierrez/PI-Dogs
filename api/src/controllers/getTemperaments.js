@@ -8,7 +8,7 @@ const {
   const { Temperament} = require('../db.js');
 const getTemperaments = async (req,res) =>{
  
-console.log('entre a get temperaments linea 11')
+
     try {
         
         const {data} = await axios.get(`${URL}?${x_api_key}`)
@@ -31,7 +31,7 @@ console.log('entre a get temperaments linea 11')
 }
 
 function filterData (data){
-    console.log('entre a filter data linea 28')
+  
     const temperamentos = data.map(perro=> {return {temperament: perro.temperament, id: perro.id }})
     return temperamentos
 }
@@ -50,9 +50,9 @@ function obtenerTemperamentos(arrayObjs) {
         }
         );
 
-        console.log(temperamentos, 'antes')
+       
     respuesta = temperamentos.map(temp => temp.trim());
-    console.log(temperamentos, 'despues')
+    
 
        
         return respuesta

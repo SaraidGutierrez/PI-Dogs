@@ -8,9 +8,10 @@ import { useLocation } from 'react-router-dom';
 
 const Home = () => {
   const dispatch = useDispatch();
-  let {search} = useLocation();
-  let query = new URLSearchParams(search)
-  console.log(query, 'soy query')
+
+ 
+
+ 
 
   useEffect(() => {
     dispatch(getAllDogsfunc());

@@ -51,7 +51,7 @@ export const getDogByName = (name)=>{
         try {
             let resultadoBusqueda = await axios.get(`http://localhost:3001/dogs/name?name=${name}`)
             let payload = resultadoBusqueda.data
-            console.log(payload, 'esto es payload action name')
+           
             return dispatch({
                 type: GET_DOG_BY_NAME,
                 payload: payload

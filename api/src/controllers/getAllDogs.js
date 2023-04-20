@@ -6,7 +6,7 @@ const {
     x_api_key
   } = process.env;
 
-console.log('entra al archivo getall')
+
 
 
   const getAllDogs = async (req, res) => {
@@ -15,7 +15,7 @@ console.log('entra al archivo getall')
       const arry1 = await getAllDogsAPI();
       const arry2 = await getAllDogsBD();
      
-      console.log(arry2)
+   
 
       const respuesta = arry1.concat(arry2);
       res.status(200).json(respuesta);

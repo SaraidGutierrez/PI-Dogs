@@ -2,10 +2,9 @@ const {Dog} = require('../db')
 
 const postDog = async (req,res) => {
     const { image, name, height, weight, temperament, life_span } = req.body
-    console.log(req.body, 'bodys de la liena 5')
-   
+
   try {
-     console.log('entra al try')
+     
        if(image && name && height && weight && temperament && life_span ){
            const [dog, created] = await Dog.findOrCreate({
                where: { name: name },
@@ -18,7 +17,7 @@ const postDog = async (req,res) => {
                    life_span: life_span,
                 }
             });
-            console.log(created)
+         
       if(created){
             res.status(200).json(dog)
       }else{

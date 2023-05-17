@@ -36,6 +36,7 @@ import createImg from '../images/newDog.png'
       dispatch(filterWeight({ order }));
       setFilters({ ...filters, weight: { order } });
     };
+    
   
     const handleSelectChange = (e) => {
       e.preventDefault();
@@ -94,6 +95,7 @@ import createImg from '../images/newDog.png'
         <Link to="/home"><button className='boton-con-imagenHome'></button>  </Link>
           <button className="boton-con-imagen" onClick={handleSortName}>A-Z <br></br>Sort</button>
           <button className="boton-con-imagen2" onClick={handleSortWeight}>Weight <br></br>Sort</button>
+        
         <div>
 
           

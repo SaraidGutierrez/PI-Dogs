@@ -41,7 +41,8 @@ const getDetailBD= async (idRaza) => {
 
 
 const getDetail = async (req, res)=>{
-    const { idRaza } = req.params;
+    const { idRaza } = req.query;
+   
     try {
         if(idRaza.length>6){
             const objeto = await getDetailBD(idRaza)

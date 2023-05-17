@@ -9,6 +9,7 @@ import {
     FILTER_TEMPERAMENTS,
     FILTER_NAME,
     FILTER_ORIGIN_DATA,
+
  
  } from './action-types'
 
@@ -93,6 +94,9 @@ export default function rootReducer(state = INITIAL_STATE, { type, payload }){
                  ...state,
                 showingDogs: arrayDogs,
             };
+
+           
+            
 
         case FILTER_ORIGIN_DATA:
             let arrayOrigin = [...state.dogs]

@@ -10,23 +10,27 @@ import {
    FILTER_ORIGIN_DATA,
    FILTER_WEIGHT,
 
+   
+
 } from './action-types'
 import axios from 'axios'
 
 export const getAllDogsfunc = ()=>{
     return async function(dispatch){
         try {
-            let getAllDogs = await axios.get(`http://localhost:3001/dogs`)
-            
+            let temperamen = await axios.get(`http://localhost:3001/dogs`)
+            let payload = temperamen.data
             return dispatch({
                 type: GET_ALL_DOGS,
-                payload: getAllDogs.data,
+                payload: payload
             })
         } catch (error) {
-            return {error: error}
+            return ({error:error})
         }
+       
     }
 }
+
 
 export const getTemperaments = ()=>{
     return async function(dispatch){
@@ -130,6 +134,7 @@ export const filterWeight = (sortBy)=>{
 
 }
 }
+
 
 export const filterOrigin = (sortBy)=>{
    
